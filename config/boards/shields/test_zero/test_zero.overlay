@@ -60,7 +60,9 @@
     };
 };
 
-/* Top-level chosen node for OLED */
- /chosen {
-    zephyr,display = &oled;
+
+/ {
+    chosen {
+        zephyr,display = &oled;
+    };
 };
