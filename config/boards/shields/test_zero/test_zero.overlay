@@ -54,8 +54,8 @@
 &pinctrl {
     i2c0_default: i2c0_default {
         group1 {
-            pinmux = <RP2040_PINMUX(4, I2C0_SDA)>,
-                     <RP2040_PINMUX(5, I2C0_SCL)>;
+            pinmux = <RP2040_PINMUX(4, I2C0_SDA)
+                      RP2040_PINMUX(5, I2C0_SCL)>;
         };
     };
 };
