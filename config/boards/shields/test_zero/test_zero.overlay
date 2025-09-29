@@ -31,6 +31,10 @@
 	};
 };
 
+/chosen {
+    zephyr,display = &oled;
+};
+
 &i2c0 {
     status = "okay";
     pinctrl-0 = <&i2c0_default>;
@@ -50,8 +54,11 @@
         segment-remap;
         com-invdir;
         prechargep = <0x22>;
+        input-enable;          /* optional */
+        input-schmitt-enable;  /* optional */
     };
 };
+
 
 &pinctrl {
     i2c0_default: i2c0_default {
