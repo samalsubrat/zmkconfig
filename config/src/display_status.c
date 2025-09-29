@@ -1,19 +1,14 @@
 #include <device.h>
 #include <drivers/display.h>
-#include <zephyr.h>
+#include <lvgl.h>
 
-void main(void) {
-    const struct device *dev = device_get_binding("SSD1306");
-    if (!dev) {
-        printk("Display not found!\n");
-        return;
-    }
+void oled_init(const struct device *dev) {
+    display_blanking_off(dev);  // turn display on
+}
 
-    uint8_t buffer[8 * 128] = {0}; // 8 pages, 128 columns
-    // Draw a simple pattern (fill top row)
-    for (int i = 0; i < 128; i++) {
-        buffer[i] = 0xFF;
-    }
-
-    display_write(dev, buffer, 0, 0, 128, 8);
+void oled_update(const struct device *dev) {
+    lv_obj_t *label = lv_label_create(lv_scr_act());
+    lv_label_set_text(label, "Hello ZMK!");
+    lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
+    lv_task_handler();
 }
