@@ -1,23 +1,19 @@
-#include <zephyr/device.h>
+#include <device.h>
 #include <drivers/display.h>
-#include <lvgl.h>
-#include <zmk/display/status_screen.h>
+#include <zephyr.h>
 
-LV_FONT_DECLARE(lv_font_montserrat_16); // built-in font
+void main(void) {
+    const struct device *dev = device_get_binding("SSD1306");
+    if (!dev) {
+        printk("Display not found!\n");
+        return;
+    }
 
-// Function called to draw on OLED
-static void oled_update(struct device *dev) {
-    // Clear screen
-    lv_obj_clean(lv_scr_act());
+    uint8_t buffer[8 * 128] = {0}; // 8 pages, 128 columns
+    // Draw a simple pattern (fill top row)
+    for (int i = 0; i < 128; i++) {
+        buffer[i] = 0xFF;
+    }
 
-    // Create a label and center it
-    lv_obj_t *label = lv_label_create(lv_scr_act());
-    lv_label_set_text(label, "Hello ZMK!");
-    lv_obj_align(label, LV_ALIGN_CENTER, 0, 0);
-
-    // Refresh display
-    lv_disp_flush_ready(lv_disp_get_default());
+    display_write(dev, buffer, 0, 0, 128, 8);
 }
-
-// Register this as a status screen
-ZMK_DISPLAY_SCREEN(oled_screen, oled_update);
