@@ -4,7 +4,8 @@
  * SPDX-License-Identifier: MIT
 */
 #include <dt-bindings/zmk/matrix_transform.h>
-#include <dt-bindings/pinctrl/rp2040-pinctrl.h>
+#include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
+
 
 
 / {
@@ -55,8 +56,9 @@
 &pinctrl {
     i2c0_default: i2c0_default {
         group1 {
-            pinmux = <RP2040_PINMUX(4, I2C0_SDA)
-                      RP2040_PINMUX(5, I2C0_SCL)>;
+            pinmux = <I2C0_SDA_P4 I2C0_SCL_P5>;
+            input-enable;
+            input-schmitt-enable;
         };
     };
 };
