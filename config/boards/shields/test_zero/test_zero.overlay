@@ -1,38 +1,29 @@
 /*
- * Copyright (c) 2022 Gleb Sabirzyanov
- *
  * SPDX-License-Identifier: MIT
-*/
+ */
+
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h>
 
-
-
 / {
-	chosen {
-		zmk,kscan = &kscan0;
-	};
+    chosen {
+        zmk,kscan = &kscan0;
+    };
 
-	kscan0: kscan {
-		compatible = "zmk,kscan-gpio-direct", "waveshare_rp2040_zero";
-		label = "KSCAN";
+    kscan0: kscan {
+        compatible = "zmk,kscan-gpio-direct";
+        label = "KSCAN";
 
-		input-gpios
-			= <&gpio0 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-			, <&gpio0 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-			, <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-			, <&gpio0 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-			, <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-			, <&gpio0 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-			, <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-			, <&gpio0 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-			, <&gpio0 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-			;
-	};
-};
-
-/chosen {
-    zephyr,display = &oled;
+        input-gpios = <&gpio0 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+                       <&gpio0 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+                       <&gpio0 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+                       <&gpio0 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+                       <&gpio0 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+                       <&gpio0 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+                       <&gpio0 6 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+                       <&gpio0 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+                       <&gpio0 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    };
 };
 
 &i2c0 {
@@ -54,11 +45,10 @@
         segment-remap;
         com-invdir;
         prechargep = <0x22>;
-        input-enable;          /* optional */
-        input-schmitt-enable;  /* optional */
+        input-enable;
+        input-schmitt-enable;
     };
 };
-
 
 &pinctrl {
     i2c0_default: i2c0_default {
@@ -70,4 +60,7 @@
     };
 };
 
-
+/* Top-level chosen node for OLED */
+ /chosen {
+    zephyr,display = &oled;
+};
