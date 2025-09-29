@@ -44,7 +44,7 @@
     pinctrl-names = "default";
 
     // Add required clock-frequency for Zephyr I2C driver
-    clock-frequency = <400000>;   // 400 kHz
+    clock-frequency = <100000>;   // 100 kHz
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
