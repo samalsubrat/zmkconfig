@@ -42,22 +42,21 @@
     status = "okay";
     pinctrl-0 = <&i2c0_default>;
     pinctrl-names = "default";
-    clock-frequency = <400000>;
 
     oled: ssd1306@3c {
-        compatible = "solomon,ssd1306fb-i2c";
-        label = "SSD1306";
+        compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
-        status = "okay";
+        label = "SSD1306";
         width = <128>;
         height = <64>;
+
         segment-offset = <0>;
         page-offset = <0>;
-        display-offset = <0>;
-        multiplex-ratio = <63>;
-        segment-remap;
-        com-invdir;
+
         prechargep = <0x22>;
+        multiplex-ratio = <63>;
+
+        reset-gpios = <&gpio0 15 GPIO_ACTIVE_LOW>;
     };
 };
 
@@ -68,12 +67,5 @@
             input-enable;
             input-schmitt-enable;
         };
-    };
-};
-
-
-/ {
-    chosen {
-        zephyr,display = &oled;
     };
 };
