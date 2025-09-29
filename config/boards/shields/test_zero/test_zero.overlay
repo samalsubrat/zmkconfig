@@ -33,9 +33,8 @@
     clock-frequency = <400000>;
 
     oled: ssd1306@3c {
-        compatible = "solomon,ssd1306fb";
+        compatible = "solomon,ssd1306fb-i2c";
         reg = <0x3c>;
-        label = "DISPLAY";
         width = <128>;
         height = <64>;
         segment-offset = <0>;
@@ -45,10 +44,9 @@
         segment-remap;
         com-invdir;
         prechargep = <0x22>;
-        input-enable;
-        input-schmitt-enable;
     };
 };
+
 
 &pinctrl {
     i2c0_default: i2c0_default {
