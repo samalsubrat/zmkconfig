@@ -1,0 +1,13 @@
+manifest:
+  remotes:
+    - name: zmkfirmware
+      url-base: https://github.com/zmkfirmware
+    - name: zyumbik
+      url-base: https://github.com/zyumbik
+  projects:
+    - name: zmk
+      remote: zyumbik
+      revision: rp2040-zero-plus-combos-fix
+      import: app/west.yml
+  self:
+    path: config
