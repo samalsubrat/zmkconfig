@@ -2,11 +2,9 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: samalsubrat
-      url-base: https://github.com/samalsubrat
   projects:
     - name: zmk
-      remote: samalsubrat
+      remote: zmkfirmware
       revision: rp2040-zero
       import: app/west.yml
   self:
