@@ -1,0 +1,1 @@
+target_sources(zmk PRIVATE display_status.c)
