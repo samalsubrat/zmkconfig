@@ -2,9 +2,10 @@
  * Copyright (c) 2022 Gleb Sabirzyanov
  *
  * SPDX-License-Identifier: MIT
- */
-
+*/
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/pinctrl/rp2040-pinctrl.h>
+
 
 / {
 	chosen {
