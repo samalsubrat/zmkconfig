@@ -43,6 +43,9 @@
     pinctrl-0 = <&i2c0_default>;
     pinctrl-names = "default";
 
+    // Add required clock-frequency for Zephyr I2C driver
+    clock-frequency = <400000>;   // 400 kHz
+
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
         reg = <0x3c>;
@@ -52,7 +55,7 @@
 
         segment-offset = <0>;
         page-offset = <0>;
-		display-offset = <0>;
+        display-offset = <0>;        // Required by ssd1306 binding
         prechargep = <0x22>;
         multiplex-ratio = <63>;
 
