@@ -2,12 +2,12 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: zyumbik
-      url-base: https://github.com/zyumbik
+    - name: samalsubrat
+      url-base: https://github.com/samalsubrat
   projects:
     - name: zmk
-      remote: zyumbik
-      revision: rp2040-zero-plus-combos-fix
+      remote: samalsubrat
+      revision: rp2040-zero
       import: app/west.yml
   self:
     path: config
