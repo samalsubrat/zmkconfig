@@ -10,6 +10,7 @@
         zmk,kscan = &kscan0;
         zmk,matrix-transform = &default_transform;
         zephyr,display = &oled;
+		
     };
 
     default_transform: keymap_transform_0 {
@@ -44,7 +45,7 @@
     pinctrl-names = "default";
 
     // Add required clock-frequency for Zephyr I2C driver
-    // clock-frequency = <100000>;   // 100 kHz
+    clock-frequency = <100000>;   // 100 kHz
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
