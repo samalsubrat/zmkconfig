@@ -12,9 +12,6 @@ config ZMK_DISPLAY
 
 config SSD1306
     def_bool y
-
-config I2C
-	default y
-
+	
 endif
 
