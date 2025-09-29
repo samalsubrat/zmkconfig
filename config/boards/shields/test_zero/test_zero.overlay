@@ -53,14 +53,11 @@
 
 &pinctrl {
     i2c0_default: i2c0_default {
-        group1 { /* SDA pin */
-            pins = <3>; /* GPIO 8 */
-            function = "i2c";
-        };
-        group2 { /* SCL pin */
-            pins = <4>; /* GPIO 9 */
-            function = "i2c";
+        group1 {
+            pinmux = <RP2040_PINMUX(4, I2C0_SDA)>,
+                     <RP2040_PINMUX(5, I2C0_SCL)>;
         };
     };
 };
+
 
